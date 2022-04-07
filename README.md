@@ -8,3 +8,7 @@
 
 - venv\Scripts\activate
 
+
+https://datatofish.com/how-to-connect-python-to-sql-server-using-pyodbc/
+
+
