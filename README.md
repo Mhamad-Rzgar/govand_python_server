@@ -11,4 +11,5 @@
 
 https://datatofish.com/how-to-connect-python-to-sql-server-using-pyodbc/
 
+pip install -U flask-cors
 

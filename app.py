@@ -35,7 +35,8 @@ def insetImages():
     print(image_name)
     cur = mysql.connection.cursor()
     # cur.execute("""SELECT user, host FROM mysql.user""")
-    cur.execute("INSERT INTO mytestdb.image (`imageData`, `imageName`) VALUES(%s,%s)", [image_data, image_name])
+    cur.execute("INSERT INTO mytestdb.image (`imageData`, `imageName`) VALUES(%s,%s)", [
+                image_data, image_name])
     rv = cur.connection.commit()
     return jsonify({
         "message": "done",
@@ -52,6 +53,13 @@ def retrieve_num_of_image():
     return jsonify(rv)
 
 
+@app.route("/", methods=['GET'])
+def retrieve_num_of_images():
+    return jsonify({
+        "message": "done",
+    })
+
+
 @app.route("/access", methods=['POST'])
 def assess_inset_images():
     response = jsonify({})
@@ -61,7 +69,8 @@ def assess_inset_images():
     cursor = conn.cursor()
     # cursor.execute("INSERT INTO assetData('imageData') VALUES(" + image_name + ")")
 
-    cursor.execute("INSERT INTO assetData(`imageData`, `imageName`) VALUES(?,?);", image_data, image_name)
+    cursor.execute(
+        "INSERT INTO assetData(`imageData`, `imageName`) VALUES(?,?);", image_data, image_name)
 
     cursor.connection.commit()
     return jsonify({
@@ -103,7 +112,8 @@ def sqlserver_inset_images():
     conn = pyodbc.connect(sql_server_str_conn)
     cursor = conn.cursor()
 
-    cursor.execute("INSERT INTO image(imageData, imageName) VALUES(?,?);", image_data, image_name)
+    cursor.execute(
+        "INSERT INTO image(imageData, imageName) VALUES(?,?);", image_data, image_name)
 
     cursor.commit()
     return jsonify({
@@ -115,7 +125,8 @@ def sqlserver_inset_images():
 def sqlserver_retrieve_num_of_image():
     conn = pyodbc.connect(sql_server_str_conn)
     cursor = conn.cursor()
-    cursor.execute("SELECT TOP 1 * FROM[mytestdb].[dbo].[image] ORDER BY[imageId] DESC")
+    cursor.execute(
+        "SELECT TOP 1 * FROM[mytestdb].[dbo].[image] ORDER BY[imageId] DESC")
     rv = cursor.fetchone()
 
     return jsonify([{
