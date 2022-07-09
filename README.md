@@ -13,3 +13,8 @@ https://datatofish.com/how-to-connect-python-to-sql-server-using-pyodbc/
 
 pip install -U flask-cors
 
+pip install pyodbc
+pip install flask
+pip install Flask-MySQLdb
+pip install Flask-Cors
+
