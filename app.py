@@ -59,6 +59,12 @@ def retrieve_num_of_images():
         "message": "done",
     })
 
+@app.route("/test", methods=['GET'])
+def retrieve_num_of_images():
+    return jsonify({
+        "message": "test done",
+    })
+
 
 @app.route("/access", methods=['POST'])
 def assess_inset_images():
